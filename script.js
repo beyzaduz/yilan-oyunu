@@ -4,6 +4,7 @@ const scoreElement = document.getElementById("score");
 const highScoreElement = document.getElementById("highScore");
 const gameOverMessage = document.getElementById("gameOverMessage");
 const restartButton = document.getElementById("restartButton");
+const controlButtons = document.querySelectorAll(".control-button");
 const eatSound = new Audio("eat.mp3");
 const gameOverSound = new Audio("gameover.mp3");
 const bgMusic = new Audio("bg-music.mp3");
@@ -302,6 +303,14 @@ function setDirection(key) {
   }
 }
 
+function handleDirectionInput(key) {
+  unlockAudio();
+  if (isGameOver) {
+    return;
+  }
+  setDirection(key);
+}
+
 function gameLoop() {
   if (isGameOver) {
     return;
@@ -342,17 +351,18 @@ function resetGame() {
 }
 
 document.addEventListener("keydown", (event) => {
-  unlockAudio();
   if (event.key.startsWith("Arrow")) {
     event.preventDefault();
   }
-  if (isGameOver) {
-    return;
-  }
-  setDirection(event.key);
+  handleDirectionInput(event.key);
 });
 
 restartButton.addEventListener("click", resetGame);
 document.addEventListener("click", unlockAudio);
+controlButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    handleDirectionInput(button.dataset.direction);
+  });
+});
 
 resetGame();

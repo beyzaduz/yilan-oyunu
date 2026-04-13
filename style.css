@@ -82,6 +82,69 @@ h1 {
   background: #00a344;
 }
 
+.mobile-controls {
+  display: none;
+  width: 220px;
+  margin: 1rem auto 0.3rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    ". up ."
+    "left . right"
+    ". down .";
+  gap: 0.65rem;
+}
+
+.control-button {
+  width: 58px;
+  height: 58px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+  font-size: 1.5rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.control-button:active {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.control-up {
+  grid-area: up;
+}
+
+.control-left {
+  grid-area: left;
+}
+
+.control-right {
+  grid-area: right;
+}
+
+.control-down {
+  grid-area: down;
+}
+
 .hidden {
   display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem 0.75rem;
+  }
+
+  #gameCanvas {
+    width: min(92vw, 400px);
+    height: min(92vw, 400px);
+  }
+
+  .mobile-controls {
+    display: grid;
+  }
 }
