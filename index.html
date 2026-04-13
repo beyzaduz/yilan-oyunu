@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basit Yılan Oyunu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-wrapper">
+    <h1>Yılan Oyunu</h1>
+    <div class="score-panel">
+      <p class="score">Skor: <span id="score">0</span></p>
+      <p class="high-score">En Yüksek: <span id="highScore">0</span></p>
+    </div>
+    <canvas id="gameCanvas" width="400" height="400" aria-label="Yılan oyunu alanı"></canvas>
+    <p id="gameOverMessage" class="game-over hidden">Oyun Bitti!</p>
+    <button id="restartButton" class="restart-button hidden" type="button">Yeniden Başla</button>
+    <p class="info">Yön tuşları ile hareket ettirebilirsin.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
